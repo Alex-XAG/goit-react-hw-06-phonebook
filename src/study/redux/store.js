@@ -1,25 +1,19 @@
 import {
   configureStore,
-  createAction,
-  createReducer,
-  createSlice,
+  // createAction,
+  // createReducer,
 } from '@reduxjs/toolkit';
+// import logger from 'redux-logger';
+import { myValueSlice } from './myValueSlice/myValueSlice';
+import { itemsSlice } from './itemsSlice/itemsSlice';
 
-const myValueSlice = createSlice({
-  name: 'myValue',
-  initialState: 100,
-  reducers: {
-    increment(state, action) {
-      return state + action.payload;
-    },
-    decrement(state, action) {
-      return state - action.payload;
-    },
+export const store = configureStore({
+  reducer: {
+    myValue: myValueSlice.reducer,
+    items: itemsSlice.reducer,
   },
+  // middleware: getDefaultMidleware => [...getDefaultMidleware(), logger],
 });
-
-// console.log(myValueSlice);
-export const { increment, decrement } = myValueSlice.actions;
 
 // export const increment = createAction('myValue/increment');
 // export const decrement = createAction('myValue/decrement');
@@ -31,21 +25,6 @@ export const { increment, decrement } = myValueSlice.actions;
 //   [decrement]: (state, action) => state - action.payload,
 // };
 
-const itemsSlice = createSlice({
-  name: 'items',
-  initialState: [],
-  reducers: {
-    add(state, action) {
-      return [...state, action.payload];
-    },
-    remove(state, action) {
-      return state.filter(item => item.id !== action.payload);
-    },
-  },
-});
-
-export const { add, remove } = itemsSlice.actions;
-
 // export const add = createAction('items/add');
 // export const remove = createAction('items/remove');
 
@@ -53,13 +32,6 @@ export const { add, remove } = itemsSlice.actions;
 //   [add]: (state, action) => [...state, action.payload],
 //   [remove]: (state, action) => state.filter(item => item.id !== action.payload),
 // });
-
-export const store = configureStore({
-  reducer: {
-    myValue: myValueSlice.reducer,
-    items: itemsSlice.reducer,
-  },
-});
 
 //=============== Before ========================
 // import { createStore } from "redux";
