@@ -6,11 +6,13 @@ import {
 // import logger from 'redux-logger';
 import { myValueSlice } from './myValueSlice/myValueSlice';
 import { itemsSlice } from './itemsSlice/itemsSlice';
+import { userSlice } from './userSlice/userSlice';
 
 export const store = configureStore({
   reducer: {
     myValue: myValueSlice.reducer,
     items: itemsSlice.reducer,
+    user: userSlice.reducer,
   },
   // middleware: getDefaultMidleware => [...getDefaultMidleware(), logger],
 });

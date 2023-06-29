@@ -1,10 +1,9 @@
+import { LoginForm } from 'study/componentsStudy/LoginForm/LoginForm';
+
 export const LoginPage = () => {
   return (
     <div>
-      <form>
-        <input type="text" name="login" />
-        <button type="submit">Log in</button>
-      </form>
+      <LoginForm />
     </div>
   );
 };
