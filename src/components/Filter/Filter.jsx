@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FilterLabel, FilerInput } from './Filter.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
 
 export const Filter = ({ option }) => {
   const dispatch = useDispatch();
+  const filter = useSelector(state => state.filter);
 
   return (
     <>
@@ -13,13 +13,9 @@ export const Filter = ({ option }) => {
       <FilerInput
         name="filter"
         type="text"
-        value={option}
+        value={filter}
         onChange={evt => dispatch(setFilter(evt.target.value))}
       />
     </>
   );
-};
-
-Filter.propTypes = {
-  option: PropTypes.string.isRequired,
 };
