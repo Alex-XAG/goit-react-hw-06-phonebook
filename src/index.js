@@ -10,10 +10,10 @@ import { persistor, store } from './redux/store';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <App />
-      {/* <AppStudy /> */}
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+        {/* <AppStudy /> */}
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
